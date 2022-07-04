@@ -1,11 +1,8 @@
-# Welcome to your Jupyter Book
+# Welcome to this tutorial for Recurrent Neural Networks for Neuroscientists
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+This is part of a tutorial written for a [Master's Course](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/) for psychology students at Goethe University.
 
-Check out the content pages bundled with this sample book to see more.
+Feel free to look around, I hope you enjoy it!
 
 ```{tableofcontents}
 ```
