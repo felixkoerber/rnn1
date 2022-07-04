@@ -1,0 +1,1218 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recurrent Neural Networks in Neuroscience &#8212; Recurrent Neural Networks for Neuroscientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to this tutorial for Recurrent Neural Networks for Neuroscientists" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Recurrent Neural Networks for Neuroscientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to this tutorial for Recurrent Neural Networks for Neuroscientists
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Recurrent Neural Networks in Neuroscience
+   </strong>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/rnnbook.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frnnbook.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/rnnbook.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Recurrent Neural Networks in Neuroscience
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-rnns">
+     <strong>
+      What are RNNs?
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-they-work">
+     <strong>
+      How they work.
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-rnns">
+     <strong>
+      Types of RNNs
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-to-one">
+       <strong>
+        One-to-One
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-to-many">
+       <strong>
+        One-to-Many
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-one">
+       <strong>
+        Many-to-One
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-many">
+       <strong>
+        Many-To-Many
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#yeah-we-kinda-skipped-math">
+   <strong>
+    Yeah, we kinda skipped math.
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rnns">
+     <strong>
+      RNNs
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstm-long-short-term-memory">
+     <strong>
+      LSTM - Long-Short Term Memory
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grus-gated-recurrent-units">
+     <strong>
+      GRUs - Gated Recurrent Units
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-it-really-matter-which-one-to-use">
+     <strong>
+      Does it really matter which one to use?
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-into-coding-working-with-data">
+   <strong>
+    Getting into Coding - Working with data
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-libraries-and-data-used-in-tutorial">
+     <strong>
+      Importing libraries and data used in tutorial
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-the-bold-data">
+     <strong>
+      Preparing the BOLD-data
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-validation-testing-sets">
+     <strong>
+      Training, Validation &amp; Testing Sets
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-recurrent-neural-network">
+     <strong>
+      Building a Recurrent Neural Network
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-a-recurrent-neural-network">
+     <strong>
+      Training a Recurrent Neural Network
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluating-our-recurrent-neural-network">
+     <strong>
+      Evaluating our Recurrent Neural Network
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#self-test-questions-closing-words">
+   <strong>
+    Self-Test Questions &amp; Closing Words
+   </strong>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Recurrent Neural Networks in Neuroscience</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Recurrent Neural Networks in Neuroscience
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-rnns">
+     <strong>
+      What are RNNs?
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-they-work">
+     <strong>
+      How they work.
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-rnns">
+     <strong>
+      Types of RNNs
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-to-one">
+       <strong>
+        One-to-One
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-to-many">
+       <strong>
+        One-to-Many
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-one">
+       <strong>
+        Many-to-One
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#many-to-many">
+       <strong>
+        Many-To-Many
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#yeah-we-kinda-skipped-math">
+   <strong>
+    Yeah, we kinda skipped math.
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rnns">
+     <strong>
+      RNNs
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstm-long-short-term-memory">
+     <strong>
+      LSTM - Long-Short Term Memory
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grus-gated-recurrent-units">
+     <strong>
+      GRUs - Gated Recurrent Units
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-it-really-matter-which-one-to-use">
+     <strong>
+      Does it really matter which one to use?
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-into-coding-working-with-data">
+   <strong>
+    Getting into Coding - Working with data
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-libraries-and-data-used-in-tutorial">
+     <strong>
+      Importing libraries and data used in tutorial
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-the-bold-data">
+     <strong>
+      Preparing the BOLD-data
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-validation-testing-sets">
+     <strong>
+      Training, Validation &amp; Testing Sets
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-recurrent-neural-network">
+     <strong>
+      Building a Recurrent Neural Network
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-a-recurrent-neural-network">
+     <strong>
+      Training a Recurrent Neural Network
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluating-our-recurrent-neural-network">
+     <strong>
+      Evaluating our Recurrent Neural Network
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#self-test-questions-closing-words">
+   <strong>
+    Self-Test Questions &amp; Closing Words
+   </strong>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="recurrent-neural-networks-in-neuroscience">
+<h1><strong>Recurrent Neural Networks in Neuroscience</strong><a class="headerlink" href="#recurrent-neural-networks-in-neuroscience" title="Permalink to this headline">#</a></h1>
+<p>This notebook explores Recurrent Neural Networks. In the end, you will have a basic understanding of what RNNs are, how they work, how to use them, and what limitations they have. We will also look at a small example that features sex prediction based on fMRI data. Sounds interesting? Damn right it does!</p>
+<blockquote>
+<div><p>Before starting the course, you should have a basic understanding of Python, how neural networks are structured, how optimizing them works, and what activation functions are. But for now, a basic understanding will do.</p>
+</div></blockquote>
+<p><strong>Feeling prepared? Perfect! Let’s get into it:</strong></p>
+<div class="section" id="what-are-rnns">
+<h2><strong>What are RNNs?</strong><a class="headerlink" href="#what-are-rnns" title="Permalink to this headline">#</a></h2>
+<p>Recurrent Neural Networks (RNNs) are a class of neural networks that utilize data sequences. The sequence of data can be critical, with the language being a prominent example of that: The sentences</p>
+<blockquote>
+<div><p><em>I’m eating right now, dad.</em></p>
+</div></blockquote>
+<p>and</p>
+<blockquote>
+<div><p><em>I’m eating dad right now.</em></p>
+</div></blockquote>
+<p>mean totally different things while only the order of their words differs. Sequence matters! There are countless more examples in which the consecutiveness of data is relevant: From weather-forecasting (if it rained a few seconds ago, chances are, it is still raining) to animations to EEG-time-series. However, “ordinary” neural networks have no capabilities of treating data as something sequential.</p>
+<p><strong>In contrast, RNNs are designed to process data in order, thus, keeping the consecutiveness in “mind”.</strong></p>
+</div>
+<div class="section" id="how-they-work">
+<h2><strong>How they work.</strong><a class="headerlink" href="#how-they-work" title="Permalink to this headline">#</a></h2>
+<p>RNNs pass some information of previous timesteps to the hidden states of subsequent steps. They can be trained to ideally only pass down relevant information, disregarding everything that doesn’t help minimize a given loss.</p>
+<p>Let’s look at the “rolled” version of the visualization of RNNs (left) and compare that to “ordinary” NNs (right). Blue circles symbolize some inputs, while the green circles are hidden states. In RNNs, the output is fed forward to the next step of the network, visualized by the green arrow feeding back into the hidden state: Some information is preserved for the next generation of output.
+<img alt="" src="https://drive.google.com/uc?export=view&amp;id=1n4-mLjGajDdwutAEP4jtNmbYk9cGNBwM" /></p>
+<p>Let’s unroll the Neural Network, as it helps visualize RNNs that way. <span class="math notranslate nohighlight">\(X_t\)</span> are the inputs for every timestep, while <span class="math notranslate nohighlight">\(Y_t\)</span> are the respective outputs generated. While regular Neural Networks would generate output only based on the input, RNNs pass information down for the next timestep while also accepting further input. Since <span class="math notranslate nohighlight">\(X_t\)</span> is fed to the network “one step at a time,” the consecutiveness is preserved.
+<img alt="" src="https://drive.google.com/uc?export=view&amp;id=13URFZ3McnGPXfM7iyAEu6l3EhGfGMKOh" /></p>
+</div>
+<div class="section" id="types-of-rnns">
+<h2><strong>Types of RNNs</strong><a class="headerlink" href="#types-of-rnns" title="Permalink to this headline">#</a></h2>
+<p>There are essentially four different types of RNNs, depending on their amount of input and outputs:</p>
+<ol class="simple">
+<li><p>One-To-One</p></li>
+<li><p>One-To-Many</p></li>
+<li><p>Many-To-One</p></li>
+<li><p>Many-To-Many</p></li>
+</ol>
+<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1mcONsIzaOAFkbRkJmqtT3Ro8u9NxnqsJ" /></p>
+<div class="section" id="one-to-one">
+<h3><strong>One-to-One</strong><a class="headerlink" href="#one-to-one" title="Permalink to this headline">#</a></h3>
+<p>This would be your basic Neural Network: One input, some hidden state, and one output. Basic and traditional.</p>
+</div>
+<div class="section" id="one-to-many">
+<h3><strong>One-to-Many</strong><a class="headerlink" href="#one-to-many" title="Permalink to this headline">#</a></h3>
+<p>A little more interesting: One input and multiple outputs. Every hidden state also passes some information over to the next hidden unit. One cool example is image-captioning: One input (an image) is supposed to generate multiple outputs (Sentences describing the image in somewhat correct English). If you want to know more, <a class="reference external" href="https://wandb.ai/authors/image-captioning/reports/Generate-Meaningful-Captions-for-Images-with-Attention-Models--VmlldzoxNzg0ODA">this</a> article is quite interesting.</p>
+</div>
+<div class="section" id="many-to-one">
+<h3><strong>Many-to-One</strong><a class="headerlink" href="#many-to-one" title="Permalink to this headline">#</a></h3>
+<p>At this point, you probably got the gist: many inputs (like a bunch of words in a sentence), and the RNN generates one output (like the sentiment of the sentence).</p>
+</div>
+<div class="section" id="many-to-many">
+<h3><strong>Many-To-Many</strong><a class="headerlink" href="#many-to-many" title="Permalink to this headline">#</a></h3>
+<p>As you might have already seen in the picture, there are two different types of Many-to-Many structures. Firstly, the output is generated for every input (a typical example is entity recognition in texts; thus, an RNN identifying what names are in a sentence). Output length can also be different from the input length, only generated after the RNN has “seen” all the input. The most prevalent example of this would be language translation. Languages might have different grammar and word positioning. Thus, it would make little sense to start generating the translation from the first word fed into the Neural Network.</p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="yeah-we-kinda-skipped-math">
+<h1><strong>Yeah, we kinda skipped math.</strong><a class="headerlink" href="#yeah-we-kinda-skipped-math" title="Permalink to this headline">#</a></h1>
+<p>You might have seen this coming, but there is a bunch of complicated math behind everything. Of course, it isn’t terribly important to get everything, but gaining a basic understanding of how the modules behind the RNNs work might help you in the long run! There are literally thousands of RNN-units-types, but we will only focus on the two most common RNN-units: GRUs and LSTMs, one of which we will also use in the following coding example.</p>
+<div class="section" id="rnns">
+<h2><strong>RNNs</strong><a class="headerlink" href="#rnns" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="http://dprogrammer.org/wp-content/uploads/2019/04/RNN_Core2-768x491.png" /></p>
+<p>But first, just some recap of how RNN-hidden units generally work: an input-vector <span class="math notranslate nohighlight">\(x_t\)</span> is passed along with a hidden-layer-vector from the previous time-step to, in this case, a tanh-function, generating some output <span class="math notranslate nohighlight">\(o_t\)</span> and another hidden-layer-vector, that gets passed along to the following layer. Both feed-forward mechanisms and back-propagation are used to update weights and biases. If you are interested in the higher-level math, let me link you [here]((<a class="reference external" href="https://http">https://http</a>://dprogrammer.org/rnn-lstm-gru), from where RNN illustrations were also taken.</p>
+</div>
+<div class="section" id="lstm-long-short-term-memory">
+<h2><strong>LSTM - Long-Short Term Memory</strong><a class="headerlink" href="#lstm-long-short-term-memory" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="http://dprogrammer.org/wp-content/uploads/2019/04/LSTM-Core-768x466.png" /></p>
+<p>Classic RNNs have issues with long-term dependencies. They perform well regarding short-term dependencies like predicting the next word in</p>
+<blockquote>
+<div><p>“<strong>Blue</strong> is my favorite _____”. (wanted output: <strong>color</strong>)</p>
+</div></blockquote>
+<p>When the distance between the context (<strong>Blue</strong>) and prediction grows larger, RNNs - while theoretically capable of correctly predicting even through larger time gaps with tuning models - struggle a lot with that.</p>
+<blockquote>
+<div><p>“In my dreams, every single object was <strong>blue</strong>. It really was quite a peculiar experience: From the smallest particles to the largest fibers, everything was glowing in this strong, beautiful _____”. (wanted output: <strong>color</strong>)</p>
+</div></blockquote>
+<p>Here, LSTMs come in handy: Introduced by <a class="reference external" href="http://www.bioinf.jku.at/publications/older/2604.pdf">Hochreiter &amp; Schmidhuber (1997)</a>, they were specifically designed to tackle these issues.
+LSTMs have three gates, which we will walk through briefly.
+Furthermore, LSTMs incorporate a <strong>“cell state”</strong> (upper line from <span class="math notranslate nohighlight">\(C_t-1\)</span> to <span class="math notranslate nohighlight">\(C_t\)</span>) which carries relevant information from previous units. The cell state is only minorly influenced from one LSTM-module to subsequent ones through linear interactions. The first sigmoid-function outputs <span class="math notranslate nohighlight">\(f_t\)</span> based on <span class="math notranslate nohighlight">\(h_t-1\)</span> and <span class="math notranslate nohighlight">\(x_t\)</span>, which are values between zero and one. This essentially “manages” to which extent the cell state <span class="math notranslate nohighlight">\(C_t-1\)</span> should be passed along or be forgotten (consequently, this area of the LSTM is also called the <strong>“forget gate”</strong>).</p>
+<p><span class="math notranslate nohighlight">\(f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)\)</span> with <span class="math notranslate nohighlight">\(W_f\)</span> and <span class="math notranslate nohighlight">\(b_f\)</span> are the weights and biases vectors/ matrices respectively.</p>
+<p>In order to store new information in the cell state, a sigmoid layer will decide which values should be updated (<strong>input gate</strong>).</p>
+<p><span class="math notranslate nohighlight">\(i_t=\sigma(W_i\cdot[h_{t-1},x_t]+b_i)\)</span></p>
+<p>A tanh-layer outputs the data potentially worth storing.</p>
+<p><span class="math notranslate nohighlight">\(\bar{C}_t=\tanh(W_c\cdot[h_{t-1},x_t]+b)\)</span>.</p>
+<p>Finally, the resulting cell-state is described by <span class="math notranslate nohighlight">\(C_t=f_t\odot C_{t-1}+i_t\odot\tilde{C}_t\)</span>.</p>
+<p>This is amazing cause it means that we got the basic architecture down that enables us to keep important information while disregarding everything we don’t need. However, we still need a way to output something; the <strong>output gate</strong>.
+This is done by a sigmoid function, incorating the input-data as seen in RNNs: <span class="math notranslate nohighlight">\(o_t=\sigma(W_o\cdot[h_{t-1},x_t]+b_o)\)</span>, while being filtered through the cell-state <span class="math notranslate nohighlight">\(h_t=o_t\odot\tanh(C_t)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(h_t\)</span>, of course, then gets passed along to the next module and is used as an output. Neat!</p>
+</div>
+<div class="section" id="grus-gated-recurrent-units">
+<h2><strong>GRUs - Gated Recurrent Units</strong><a class="headerlink" href="#grus-gated-recurrent-units" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="http://dprogrammer.org/wp-content/uploads/2019/04/GRU-768x502.png" /></p>
+<p>LSTMs work well, but there is one small problem: they are very slow when it comes to training through all those parameters.
+GRUs are a fairly recent but popular addition to the evergrowing family of RNN-units first presented by <a class="reference external" href="https://arxiv.org/abs/1406.1078">Cho et al. (2014)</a></p>
+<p>GRUs feature a <strong>reset gate</strong>,</p>
+<p><span class="math notranslate nohighlight">\(r_t=\sigma(W_r \cdot [h_{t-1},x_t]+b_r)\)</span></p>
+<p>while combining the forget and input gates into a single <strong>“update gate”</strong></p>
+<p><span class="math notranslate nohighlight">\(z_t=\sigma(W_z \cdot[h_{t-1},x_t]+b_z)\)</span>.</p>
+<p>Notice how GRUs don’t have a cell state but instead only pass information through the hidden states.</p>
+<p>Finally, the resulting vector is based on a candidate vector <span class="math notranslate nohighlight">\(\bar{h}_t\)</span>, <span class="math notranslate nohighlight">\(z_t\)</span> and of course <span class="math notranslate nohighlight">\(h_t-1\)</span> and calculated by <span class="math notranslate nohighlight">\(h_t=(1-z_t)\odot h_{t-1}+z_t\odot \tilde{h}_t\)</span>.</p>
+</div>
+<div class="section" id="does-it-really-matter-which-one-to-use">
+<h2><strong>Does it really matter which one to use?</strong><a class="headerlink" href="#does-it-really-matter-which-one-to-use" title="Permalink to this headline">#</a></h2>
+<p>This question is critical looking at the thousands of different RNN-versions. <a class="reference external" href="http://proceedings.mlr.press/v37/jozefowicz15.pdf">Rafal  et al. (2015)</a> tested more than ten thousand LSTM-variants and found no architecture beating the original LSTMs or GRUs in all their experimental tasks. So while there might be minor differences in the performance of the two architectures, it comes down to the use-case, time, and computational power of which RNN-unit to use.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="getting-into-coding-working-with-data">
+<h1><strong>Getting into Coding - Working with data</strong><a class="headerlink" href="#getting-into-coding-working-with-data" title="Permalink to this headline">#</a></h1>
+<p>What would happen if we looked at some real-world data?
+In the following example we will try to predict sex based on fMRI data of 281 participants from the <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/23087608/">NKI-Rockland Sample</a>. While I wish I could, sadly I can’t provide you with the dataset. You can, however, apply for access <a class="reference external" href="http://fcon_1000.projects.nitrc.org/indi/enhanced/access.html">here</a>.</p>
+<p>Frankly, I believe that you will still get a good feel for the data, plus the actual working with the data applies to more than just this dataset! :)</p>
+<div class="section" id="importing-libraries-and-data-used-in-tutorial">
+<h2><strong>Importing libraries and data used in tutorial</strong><a class="headerlink" href="#importing-libraries-and-data-used-in-tutorial" title="Permalink to this headline">#</a></h2>
+<p>Let’s first start with <em>all</em> the imports, just to have those out of the way.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#Important to handle data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#to plot some nice graphs</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1">#makes the graphs even nicer</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sc</span> <span class="c1">#great to handle data, too, we will use it to import our data</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span> <span class="c1">#API we use for Deep Learning</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span> <span class="c1">#is needed for constructing neural networks</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span><span class="n">MaxPooling1D</span><span class="p">,</span> <span class="n">Dropout</span> <span class="c1">#these are the different types of layers we will use in this tutorial</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span> <span class="c1">#Adam is one of the most popular optimizers</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TF_CPP_MIN_LOG_LEVEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#Important to handle data</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#to plot some nice graphs</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we will import our label-data, aka. the sex of participants.</p>
+<blockquote>
+<div><p><strong>Note: Sadly, the data aquired sex only in a binary fashion for all participants. Even when only considering biological sexes, two sexes are oversimplistic.</strong></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#sex = np.array(pd.read_csv (&#39;sex.csv&#39;, header=0, index_col=0))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data is organized in a one-hot encoded fashion. Thus, columns represent female and male and rows participants. Participants can either be or not be a given sex. For the first participant listed below: <code class="docutils literal notranslate"><span class="pre">[1.</span> <span class="pre">=</span> <span class="pre">is</span> <span class="pre">female,</span> <span class="pre">0.</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">male]</span></code>, <em>participant 1</em> is <em>female.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sex</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0.],
+       [0., 1.],
+       [0., 1.],
+       [1., 0.],
+       [0., 1.],
+       [0., 1.],
+       [1., 0.],
+       [1., 0.],
+       [0., 1.],
+       [1., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;female (n = 183)&quot;</span><span class="p">,</span><span class="s2">&quot;male (n = 98)&quot;</span><span class="p">],[</span><span class="nb">sum</span><span class="p">(</span><span class="n">sex</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span><span class="nb">sum</span><span class="p">(</span><span class="n">sex</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;number of participants&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span> <span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+<img alt="_images/rnnbook_22_1.png" src="_images/rnnbook_22_1.png" />
+</div>
+</div>
+<p>Quite a few more female participants than male participants in our sample!</p>
+<p>Next, we will import the BOLD-data we are using in this tutorial.</p>
+<p>The first line imports the data of previously mentioned 281 participants, stored in a numpy file container. Thankfully, it is preprocessed, so we don’t have to deal with that in this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span> <span class="p">(</span><span class="s1">&#39;bold.npy&#39;</span><span class="p">)</span>
+<span class="n">bold</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(281, 113, 884)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the line above the shape of the data is printed. The bold data is organized as <code class="docutils literal notranslate"><span class="pre">(participant,</span> <span class="pre">node,</span> <span class="pre">time)</span></code>. Let’s visualize part the activity for 10 nodes for the first participants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;darkgrid&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">)})</span>
+<span class="n">plotdata</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">bold</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plotdata</span><span class="p">,</span>
+                  <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                  <span class="n">legend</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;bold-signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">155.03875</span><span class="p">),</span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/rnnbook_27_0.png" src="_images/rnnbook_27_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="preparing-the-bold-data">
+<h2><strong>Preparing the BOLD-data</strong><a class="headerlink" href="#preparing-the-bold-data" title="Permalink to this headline">#</a></h2>
+<p>Hmm, we can’t pass this data directly to a neural network. Not only is the bold extremely high (which we could fix through a normalizer), but also is the variation of the activation low. One metric that is often used in neuroscience is the correlation matrix, describing the functional connectivity of ROIs. If we’d only compute the cross-correlation for the whole time series, we’d neglect the temporal component, though.</p>
+<p>What we do is compute the functional connectivity multiple times using sliding window correlations over <span class="math notranslate nohighlight">\(ti\)</span> time-intervals, for which then obtain <span class="math notranslate nohighlight">\(ti\)</span> correlation matrices. This is a widely used practice in computational neuroscience. The resulting matrices may reflect the changing functional connectivity over time</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ti</span><span class="o">=</span><span class="mi">44</span> <span class="c1">#The amount of sliding windows</span>
+
+<span class="n">longwin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">281</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="mi">6328</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bold</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])):</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ti</span><span class="p">):</span>
+        <span class="n">longwin</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">bold</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">20</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span><span class="mi">20</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">)])[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="mi">113</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wait, what just happened? Here we chose an arbitrary number ti of time intervals (I opted for <span class="math notranslate nohighlight">\(884 / 44 ≈ 20\)</span>). Through np.corrcoef we calculate the cross-correlation 88 times for 10 timesteps each. Since the cross-correlation matrix is symmetrical, we extract and flatten one half of it with <code class="docutils literal notranslate"><span class="pre">np.triu_indices(113,</span> <span class="pre">k=1)</span></code> (the area in the red triangle in the illustration below, which is equal to 6328 datapoints). This is repeated for each participant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">)})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">bold</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">20</span> <span class="p">]),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span> <span class="c1">#plots a correlation matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># plots the triangle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;node&#39;)
+</pre></div>
+</div>
+<img alt="_images/rnnbook_32_1.png" src="_images/rnnbook_32_1.png" />
+</div>
+</div>
+<p>Finally, for each participant the flattened data is stored in yet another array we called <em>longwin</em> with the dimensions: <em>(number of participants <strong>281</strong> x number of dynamic functional connectivity <strong>44</strong> x flattened correlations <strong>6328</strong>)</em>. Below, 200 of these correlation points are plotted for one participant.</p>
+<p>Note that one line equals the flattened triangle from above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">)})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">longwin</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">200</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span> <span class="c1">#plots the dynamic functional connectivity matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time window&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;correlation point&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/rnnbook_34_0.png" src="_images/rnnbook_34_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="training-validation-testing-sets">
+<h2><strong>Training, Validation &amp; Testing Sets</strong><a class="headerlink" href="#training-validation-testing-sets" title="Permalink to this headline">#</a></h2>
+<p>Since this is about Neural Networks, we have to split the data into train, validation, and test sections. We, thus, split the time series into 70% train, 20% validation, and 10% test data. Really, the ratio between is somewhat arbitrary. If you experiment with NNs, just make sure you have enough samples for each “category” and attribute most of your data to the “train” data.</p>
+<p>Never let your neural network see data you want to validate your network on before the validation! If you have never heard about why we split our data for training NNs, read <a class="reference external" href="https://blog.roboflow.com/train-test-split/">here</a>. The gist is: that if you only have one dataset (only train), you run into the risk of overfitting your model since your network learns well how to predict the training data. Still, you have no idea whether it is also capable of working with data it has never seen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tenpercent</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">longwin</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">validation_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">longwin</span><span class="p">[</span><span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:],</span> <span class="n">longwin</span><span class="p">[</span><span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">2</span><span class="p">:</span> <span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">3</span><span class="p">],</span> <span class="n">longwin</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">train_y</span><span class="p">,</span> <span class="n">validation_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">sex</span><span class="p">[</span><span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:],</span> <span class="n">sex</span><span class="p">[</span><span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">2</span><span class="p">:</span> <span class="n">tenpercent</span> <span class="o">*</span><span class="mi">3</span><span class="p">],</span> <span class="n">sex</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="n">tenpercent</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_x</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_x</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>197 28 56
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="building-a-recurrent-neural-network">
+<h2><strong>Building a Recurrent Neural Network</strong><a class="headerlink" href="#building-a-recurrent-neural-network" title="Permalink to this headline">#</a></h2>
+<p>Finally, we get to building our Neural Network.</p>
+<p>We start by telling Keras that we aim to build a Sequential model, thus a model that for each layer has one input and one output tensor.</p>
+<blockquote>
+<div><p><strong>Reminder: What are Tensors?</strong> A tensor is just an array with n-dimensions.</p>
+</div></blockquote>
+<p>The next layer is our input layer. Here we define in which exact shape the network is getting data. In our case this must be the dimensions of the dynamic functional connectivity data stored in the longwin array, thus, it should be equal to 44 x 6328.</p>
+<blockquote>
+<div><p><strong>Note: Why not 281 x 44 x 6238?</strong> That’s because the data of all participants are sent into the network individually.</p>
+</div></blockquote>
+<p>Finally, we arrive at the first RNN layer. I opted for an LSTM layer with 100 units, however, many variations of RNNs could be fair game. The amount of units is a hyperparameter that needs to be adjusted individually for each model and use case, sadly, there is no one-size-fits-all approach. Note the <code class="docutils literal notranslate"><span class="pre">return_sequences=True</span></code>? Through that statement, not only one value is passed along after a unit has seen all the data, but data is passed along after every data point. Remember the illustration regarding the input-output relations from the beginning? <code class="docutils literal notranslate"><span class="pre">return_sequences=True</span></code> makes the unit a many-to-many-unit, <code class="docutils literal notranslate"><span class="pre">return_sequences=False</span></code> would be a many-to-one.</p>
+<p>Next, I added a Dropout-layer. This removes some amount (in this case 40%) of the neurons for training. This is done in the hope of a more robust model with reduced risk for overfitting. (You will shortly see, whether that actually worked out :D)</p>
+<p>After another LSTM layer, two dense (with all other neurons of the last layer connected) units are added, which represent the two hot encoded sex states and act as our outputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">Adam</span> <span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ lstm (LSTM)                 (None, 44, 100)           2571600   
+                                                                 
+ dropout (Dropout)           (None, 44, 100)           0         
+                                                                 
+ lstm_1 (LSTM)               (None, 10)                4440      
+                                                                 
+ dense (Dense)               (None, 2)                 22        
+                                                                 
+=================================================================
+Total params: 2,576,062
+Trainable params: 2,576,062
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/keras/optimizer_v2/adam.py:105: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(Adam, self).__init__(name, **kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="training-a-recurrent-neural-network">
+<h2><strong>Training a Recurrent Neural Network</strong><a class="headerlink" href="#training-a-recurrent-neural-network" title="Permalink to this headline">#</a></h2>
+<p>Those 2.576.062 parameters need to be trained of course! We will add two additional arguments: <code class="docutils literal notranslate"><span class="pre">lr_decay</span></code> reduce the learning rate once the learning reaches a plateau and <code class="docutils literal notranslate"><span class="pre">early_stop</span></code> looks at the loss of the validation set and stops learning once validation loss increases.</p>
+<p>Finally, we train the model with the <code class="docutils literal notranslate"><span class="pre">model.fit()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">ReduceLROnPlateau</span><span class="p">,</span> <span class="n">EarlyStopping</span>
+<span class="kn">from</span> <span class="nn">keras.regularizers</span> <span class="kn">import</span> <span class="n">l2</span>
+<span class="n">lr_decay</span> <span class="o">=</span> <span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> 
+                             <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                             <span class="n">factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_lr</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+<span class="c1"># Define Early Stopping:</span>
+<span class="n">early_stop</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                           <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                           <span class="n">baseline</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">History</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span><span class="n">train_y</span><span class="p">,</span> <span class="c1">#data that the model should train on</span>
+                  <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1">#defines the times the data is passed through the neural network</span>
+                  <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1">#defines smaller batches of data that can passed through individually (10 parts per epoch)</span>
+                  <span class="n">validation_data</span><span class="o">=</span><span class="p">[</span><span class="n">validation_x</span><span class="p">,</span><span class="n">validation_y</span><span class="p">],</span> <span class="c1">#data not used for training, but for evaluating overfitting</span>
+                  <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#if true, shuffles training data</span>
+                  <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1">#defines how much information is printed</span>
+                  <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">lr_decay</span><span class="p">,</span> <span class="n">early_stop</span><span class="p">])</span> <span class="c1">#reduces learning rate/ stops learning for bad validation loss</span>
+                    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+20/20 [==============================] - 9s 59ms/step - loss: 0.6187 - val_loss: 0.7576 - lr: 0.0010
+Epoch 2/10
+20/20 [==============================] - 0s 19ms/step - loss: 0.5412 - val_loss: 0.7459 - lr: 0.0010
+Epoch 3/10
+20/20 [==============================] - 0s 17ms/step - loss: 0.4337 - val_loss: 0.8445 - lr: 0.0010
+Epoch 4/10
+20/20 [==============================] - 0s 17ms/step - loss: 0.3349 - val_loss: 0.7376 - lr: 0.0010
+Epoch 5/10
+20/20 [==============================] - ETA: 0s - loss: 0.2506Restoring model weights from the end of the best epoch: 4.
+20/20 [==============================] - 0s 18ms/step - loss: 0.2506 - val_loss: 0.8387 - lr: 0.0010
+Epoch 5: early stopping
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see multiple interesting  things: of course, the training loss reduces over time, however, the validation loss is dramatically higher than the training loss, which is why the learning rate decreases over time as defined above.
+This is a clear indication of overfitting. One way that might remedy that would be to gather more data. However, high-quality data is not too easily obtained. Another pitfall is the skewed distribution of sex in our sample. There are possibilites of data augmentation, however, these will not be discussed in this tutorial.</p>
+<p>Until then, let’s work with what we got!</p>
+</div>
+<div class="section" id="evaluating-our-recurrent-neural-network">
+<h2><strong>Evaluating our Recurrent Neural Network</strong><a class="headerlink" href="#evaluating-our-recurrent-neural-network" title="Permalink to this headline">#</a></h2>
+<p>As the next step, we predict the sex of the participants in our test dataset based on the weights and biases of the model we just trained with the <code class="docutils literal notranslate"><span class="pre">model.predict()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6/6 [==============================] - 1s 8ms/step
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how we pass the features into the model. It is important - and I can’t reiterate that often enough - that the model should have never seen the test data before, so that the prediction can actually tests whether a model can generalize to new data and is not only fitted to the training data.</p>
+<p>Let’s look at the first 10 predictions and the actual labels of the data. Below we print the percentage of how likely the model thinks a person is female or male respectively. On the right hand the actual sex of the subject is printed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_y</span><span class="p">)[</span><span class="n">i</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.79438186 0.13905282] [1. 0.]
+[0.35311505 0.7648932 ] [0. 1.]
+[0.64569324 0.26176444] [0. 1.]
+[0.7325904  0.24075475] [1. 0.]
+[0.59041685 0.55491155] [0. 1.]
+[0.32730067 0.83840674] [0. 1.]
+[0.3253182 0.6073411] [1. 0.]
+[0.79051256 0.12758003] [1. 0.]
+[0.62335145 0.43531993] [0. 1.]
+[0.7677566  0.20556735] [1. 0.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>That really only kind of helps to evaluate, whether our model was successful. For a better evaluation, let’s compare a <strong>baseline guess</strong> (aka, if a model would only e.g. “female” for all subjects) versus <strong>our model</strong>.</p>
+<p>A guess is defined by the values outputted by the first <em>Dense Neuron</em>. If the value is <strong>higher than 0.5</strong> we interpret the prediction as “female”. (e.g. first node of the first participant outputs a value of <code class="docutils literal notranslate"><span class="pre">~0.79</span> <span class="pre">&gt;</span> <span class="pre">0.5</span></code>, thus, we interpret the value as a guess for “female” sex.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Baseline is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">test_y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">test_y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">acc</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y_hat</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]:</span>
+  <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mf">0.5</span><span class="p">:</span>
+    <span class="n">acc</span><span class="o">+=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Performance of model is: </span><span class="si">{</span><span class="n">acc</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_hat</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Baseline is: 0.5892857142857143
+Performance of model is: 0.7678571428571429
+</pre></div>
+</div>
+</div>
+</div>
+<p>Would you look at that, it beat the baseline by more than 17%! I call that a success!</p>
+<p>I hope this section helped to give you a glimpse at how a RNN implementation could look like in Keras for Neuroscience. Of course, we chose a fairly simple model and there are endless possibilites when it comes to using any sort of neural network unit.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="self-test-questions-closing-words">
+<h1><strong>Self-Test Questions &amp; Closing Words</strong><a class="headerlink" href="#self-test-questions-closing-words" title="Permalink to this headline">#</a></h1>
+<p>Before we close this session, feel free reading through the following questions and answers.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Why do RNNs have the possibilities to better predict values of timeseries?</p>
+<p>Through the architecture of RNNs, the  Neural networks can carry information from one timesteps to subsequent ones. Through that the temporal information can be utilized. Conventional neural networks don’t have such capabilites.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">What are the different gates of LSTMs?</p>
+<p>In LSTMs, there are three different gates: The input-, forget-, and output-gate: The input gate handles new information and which part of it, might be important. The forget gate updates the cell-state, while the output gate can output data (hence the name hehe).</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">General Question: Why do we split data into training, testing and validation?</p>
+<p>” if you only have one dataset (only train), you run into the risk of overfitting your model since your network learns well how to predict the training data. Still, you have no idea whether it is also capable of working with data it has never seen.”</p>
+</div>
+<p>I hope I managed to show you the great possibilities of RNNs! This tutorial was only the most basic introduction to what RNNs offer. RNNs can handle multiple inputs and deliver outputs in various forms and shapes, indicated by the number of use cases mentioned in this tutorial.</p>
+<p>Thanks for reading this tutorial, hopefully, it wasn’t dull, and you have learned some new things. Take care, and keep up the great work! :)</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Welcome to this tutorial for Recurrent Neural Networks for Neuroscientists</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Felix Körber<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
